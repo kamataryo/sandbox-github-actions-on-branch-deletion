@@ -7,4 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: cleanup
-        run: echo $GITHUB_REF_NAME
+        run: |
+        DELETED_BRANCH_NAME=$(cat ${{ github.event_path }} | jq --raw-output '.ref')
+        echo $DELETED_BRANCH_NAME
